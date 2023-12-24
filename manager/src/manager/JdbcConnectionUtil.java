@@ -19,6 +19,12 @@ public class JdbcConnectionUtil {
 
 	public static JdbcConnectionUtil getInstance() {
 		synchronized (JdbcConnectionUtil.class) {
+			try {
+				Class.forName("oracle.jdbc.OracleDriver");
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			if (instance == null) {
 				instance = new JdbcConnectionUtil();
 			}
